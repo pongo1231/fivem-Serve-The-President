@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hi.cs" />
+    <Compile Include="PlayerTeam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\EntityDecoration.cs" />
     <Compile Include="Util\EntityEnum.cs" />
