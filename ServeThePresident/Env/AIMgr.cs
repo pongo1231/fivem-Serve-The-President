@@ -16,7 +16,7 @@ namespace ServeThePresident.Env
         {
             await Delay(500);
 
-            if (Util.Player.SpawnedIn)
+            if (UPlayer.SpawnedIn)
                 foreach (Vehicle vehicle in EntityEnum.GetAllVehicles())
                 {
                     Ped driver = vehicle.Driver;

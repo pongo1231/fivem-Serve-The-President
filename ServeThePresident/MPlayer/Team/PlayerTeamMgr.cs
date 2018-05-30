@@ -3,7 +3,7 @@ using CitizenFX.Core.Native;
 using CitizenFX.Core.UI;
 using System;
 
-namespace ServeThePresident.Player.Team
+namespace ServeThePresident.MPlayer.Team
 {
     public enum PlayerTeamType
     {

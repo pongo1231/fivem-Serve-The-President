@@ -2,7 +2,7 @@
 
 namespace ServeThePresident.Util
 {
-    public static class Player
+    public static class UPlayer
     {
         public static bool SpawnedIn
         {

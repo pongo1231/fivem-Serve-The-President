@@ -5,7 +5,7 @@ using ServeThePresident.Util;
 using System;
 using System.Threading.Tasks;
 
-namespace ServeThePresident.Player.Team
+namespace ServeThePresident.MPlayer.Team
 {
     public static class PlayerSpawner
     {
@@ -68,7 +68,7 @@ namespace ServeThePresident.Player.Team
 
             public PlayerSpawnMgr()
             {
-                if (Util.Player.SpawnedIn)
+                if (UPlayer.SpawnedIn)
                     Init();
 
                 EventHandlers["playerSpawned"] += new Action(delegate
@@ -97,7 +97,7 @@ namespace ServeThePresident.Player.Team
             {
                 await Delay(100);
 
-                if (!Util.Player.SpawnedIn)
+                if (!UPlayer.SpawnedIn)
                     return;
 
                 if (Game.PlayerPed.IsDead)

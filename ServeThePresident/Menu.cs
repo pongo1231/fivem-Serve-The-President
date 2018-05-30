@@ -1,6 +1,4 @@
 ﻿using CitizenFX.Core;
-using CitizenFX.Core.Native;
-using ServeThePresident.Player.Team;
 using System;
 using System.Collections.Generic;
 
