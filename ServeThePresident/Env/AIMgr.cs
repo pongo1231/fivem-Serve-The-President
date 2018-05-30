@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace ServeThePresident.Env
 {
-    class VehicleMgr : BaseScript
+    class AIVehicleMgr : BaseScript
     {
-        public VehicleMgr()
+        public AIVehicleMgr()
         {
             Tick += OnTick;
         }
@@ -18,7 +18,13 @@ namespace ServeThePresident.Env
 
             if (Util.Player.SpawnedIn)
                 foreach (Vehicle vehicle in EntityEnum.GetAllVehicles())
-                    API.SetVehicleExplodesOnHighExplosionDamage(vehicle.Handle, false);
+                {
+                    Ped driver = vehicle.Driver;
+                    if (driver != null && !driver.IsPlayer)
+                    {
+                        // TODO: Actually do something lol
+                    }
+                }
         }
     }
 }

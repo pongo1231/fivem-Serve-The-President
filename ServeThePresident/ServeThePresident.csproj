@@ -44,12 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Env\VehicleMgr.cs" />
+    <Compile Include="Env\TimeSync.cs" />
+    <Compile Include="Env\AIMgr.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Player\PlayerSpawnMgr.cs" />
-    <Compile Include="Player\Team\PlayerTeam.cs" />
     <Compile Include="Player\Team\PlayerTeamMgr.cs" />
-    <Compile Include="Player\Team\TeamSpawns.cs" />
+    <Compile Include="Player\Team\Teams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\ScaleformDrawer.cs" />
     <Compile Include="Util\Entity.cs" />
