@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ServeThePresidentServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeamSync.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dependencies\" />

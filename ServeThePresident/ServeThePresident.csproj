@@ -34,6 +34,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\NativeUI\dependencies\CitizenFX.Client.dll</HintPath>
     </Reference>
+    <Reference Include="NativeUI">
+      <HintPath>dependencies\NativeUI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
