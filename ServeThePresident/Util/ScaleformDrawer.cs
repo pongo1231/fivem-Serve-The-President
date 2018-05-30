@@ -1,7 +1,7 @@
 ﻿using CitizenFX.Core;
 using System.Threading.Tasks;
 
-namespace ServeThePresident
+namespace ServeThePresident.Util
 {
     class ScaleformDrawer : BaseScript
     {

@@ -1,7 +1,6 @@
 ﻿using CitizenFX.Core;
 using CitizenFX.Core.Native;
 using CitizenFX.Core.UI;
-using ServeThePresident.Util;
 using System.Threading.Tasks;
 
 namespace ServeThePresident.Player.Team
@@ -11,9 +10,10 @@ namespace ServeThePresident.Player.Team
         public PlayerNoTeamMgr()
         {
             Tick += OnTick;
+            Tick += OnHelpTextTick;
         }
 
-        public async Task OnTick()
+        private async Task OnTick()
         {
             await Delay(100);
 
@@ -31,8 +31,18 @@ namespace ServeThePresident.Player.Team
             {
                 Screen.Hud.IsVisible = false;
                 Screen.Hud.IsRadarVisible = false;
+
                 API.TriggerMusicEvent("BST_START");
             }
+        }
+
+        private async Task OnHelpTextTick()
+        {
+            await Delay(1);
+
+            if (PlayerTeam.CurrentTeam == PlayerTeamType.TEAM_NONE)
+                Screen.DisplayHelpTextThisFrame("Press ~INPUT_SELECT_CHARACTER_FRANKLIN~" +
+                    " to open Team Menu");
         }
     }
 }

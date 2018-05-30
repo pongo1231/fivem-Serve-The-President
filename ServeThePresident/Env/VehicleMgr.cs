@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace ServeThePresident.Env
 {
-    class RobustVehicles : BaseScript
+    class VehicleMgr : BaseScript
     {
-        public RobustVehicles()
+        public VehicleMgr()
         {
             Tick += OnTick;
         }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServeThePresidentServer", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeUI", "NativeUI\NativeUI.csproj", "{F3E16ED9-DBF7-4E7B-B04B-9B24B11891D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServeThePresident", "ServeThePresident\ServeThePresident.csproj", "{1EE47F57-C55D-4EAA-867E-47D08C2168BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F3E16ED9-DBF7-4E7B-B04B-9B24B11891D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3E16ED9-DBF7-4E7B-B04B-9B24B11891D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3E16ED9-DBF7-4E7B-B04B-9B24B11891D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE47F57-C55D-4EAA-867E-47D08C2168BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE47F57-C55D-4EAA-867E-47D08C2168BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE47F57-C55D-4EAA-867E-47D08C2168BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE47F57-C55D-4EAA-867E-47D08C2168BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
