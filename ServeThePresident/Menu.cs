@@ -1,6 +1,7 @@
 ﻿using CitizenFX.Core;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ServeThePresident
 {
@@ -13,6 +14,8 @@ namespace ServeThePresident
             menuSpawnTeamIDs = new List<string>();
 
             EventHandlers["menu:setup"] += new Action(InitMenu);
+            EventHandlers["ServeThePresident:ReceiveTeamsInfos"] += new Action<bool, bool, bool, bool, bool>(ReceiveTeamsInfos);
+
         }
 
         private void InitMenu()
@@ -30,6 +33,15 @@ namespace ServeThePresident
                 TriggerEvent("menu:addModuleItem", id, "Terrorist", null, addIDAction, null);
                 TriggerEvent("menu:addModuleItem", id, "Civilian", null, addIDAction, null);
             }), null);
+        }
+        private async Task UpdateTeams()
+        {
+            TriggerServerEvent("ServeThePresident:RequestTeamsInfos");
+            await Delay(100);
+        }
+        private void ReceiveTeamsInfos(bool PresidentState, bool VicePresidentState, bool BodyGuardState, bool CivilianState, bool TerroristState)
+        {
+           //grey out locked teams 
         }
     }
 }
