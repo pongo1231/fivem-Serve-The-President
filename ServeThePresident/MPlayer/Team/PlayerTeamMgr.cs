@@ -24,8 +24,6 @@ namespace ServeThePresident.MPlayer.Team
         {
             CurrentTeam = newTeamType;
             await PlayerSpawner.Respawn(instant);
-
-            BaseScript.TriggerEvent("stp:reinitteam", (int) newTeamType);
         }
 
         public static void ReinitTeam()
