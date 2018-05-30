@@ -1,47 +1,63 @@
 ﻿using CitizenFX.Core;
+using CitizenFX.Core.Native;
+using ServeThePresident.Player.Team;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ServeThePresident
 {
-    class TeamMenu : BaseScript
+    public class TeamMenu : BaseScript
     {
-        private List<string> menuSpawnTeamIDs;
+        private static List<string> menuSpawnTeamIDs;
 
         public TeamMenu()
         {
-            menuSpawnTeamIDs = new List<string>();
-
             EventHandlers["menu:setup"] += new Action(InitMenu);
-            EventHandlers["ServeThePresident:ReceiveTeamsInfos"] += new Action<bool, bool, bool, bool, bool>(ReceiveTeamsInfos);
-
         }
 
         private void InitMenu()
         {
+            menuSpawnTeamIDs = new List<string>();
             Action<string> addIDAction = new Action<string>(id => { menuSpawnTeamIDs.Add(id); });
 
             TriggerEvent("menu:registerModuleMenu", "Team Menu", new Action<string>(id =>
             {
                 addIDAction.Invoke(id);
 
-                // TODO: Items actually do shit
-                TriggerEvent("menu:addModuleItem", id, "President", null, addIDAction, null);
-                TriggerEvent("menu:addModuleItem", id, "Vice President", null, addIDAction, null);
-                TriggerEvent("menu:addModuleItem", id, "Bodyguard", null, addIDAction, null);
-                TriggerEvent("menu:addModuleItem", id, "Terrorist", null, addIDAction, null);
-                TriggerEvent("menu:addModuleItem", id, "Civilian", null, addIDAction, null);
+                TriggerEvent("menu:addModuleItem", id, "TEST: NONE", null, addIDAction, new Action(delegate
+                {
+                    PlayerTeam.UpdateTeam(PlayerTeamType.TEAM_NONE);
+                }));
+                TriggerEvent("menu:addModuleItem", id, "President", null, addIDAction, new Action(delegate
+                {
+                    PlayerTeam.UpdateTeam(PlayerTeamType.TEAM_PRESIDENT);
+                }));
+                TriggerEvent("menu:addModuleItem", id, "Vice President", null, addIDAction, new Action(delegate
+                {
+                    PlayerTeam.UpdateTeam(PlayerTeamType.TEAM_VICE);
+                }));
+                TriggerEvent("menu:addModuleItem", id, "Bodyguard", null, addIDAction, new Action(delegate
+                {
+                    PlayerTeam.UpdateTeam(PlayerTeamType.TEAM_BODYGUARD);
+                }));
+                TriggerEvent("menu:addModuleItem", id, "Terrorist", null, addIDAction, new Action(delegate
+                {
+                    PlayerTeam.UpdateTeam(PlayerTeamType.TEAM_TERRORIST);
+                }));
+                TriggerEvent("menu:addModuleItem", id, "Civilian", null, addIDAction, new Action(delegate
+                {
+                    PlayerTeam.UpdateTeam(PlayerTeamType.TEAM_CIVIL);
+                }));
             }), null);
         }
-        private async Task UpdateTeams()
+
+        public static void SetSpawnMenuItemsGreyedOut(bool state)
         {
-            TriggerServerEvent("ServeThePresident:RequestTeamsInfos");
-            await Delay(100);
-        }
-        private void ReceiveTeamsInfos(bool PresidentState, bool VicePresidentState, bool BodyGuardState, bool CivilianState, bool TerroristState)
-        {
-           //grey out locked teams 
+            if (menuSpawnTeamIDs != null)
+                foreach (string id in menuSpawnTeamIDs)
+                {
+                    TriggerEvent("menu:setGreyedOut", state, id);
+                }
         }
     }
 }
