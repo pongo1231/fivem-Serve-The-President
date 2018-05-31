@@ -15,7 +15,7 @@ Citizen.CreateThread(function()
 						SetPedAsEnemy(playerPed, relationship == TeamRelationshipType.Hostile)
 
 						local blip = GetBlipFromEntity(playerPed)
-						if relationship == TeamRelationshipType.Hostile and blip then
+						if relationship == TeamRelationshipType.Hostile and not team == TeamId.President and blip then
 							RemoveBlip(blip)
 						else
 							if not blip then
