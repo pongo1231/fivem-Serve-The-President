@@ -1,6 +1,6 @@
 TeamWeapons = {
 	[TeamId.President] = {
-		-1076751822
+	
 	},
 	[TeamId.Vice] = {
 		453432689

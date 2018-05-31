@@ -1,7 +1,5 @@
 local alreadyInited
 
-exports["spawnmanager"]:setAutoSpawn(false)
-
 Spawner = {}
 function Spawner.Respawn(instant)
 	TriggerEvent("stp:respawn", instant)
@@ -9,6 +7,7 @@ end
 
 function Spawner.Init()
 	if not alreadyInited then
+		exports.spawnmanager:setAutoSpawn(false)
 		CurrentTeam.Update(TeamId.None, true)
 
 		alreadyInited = true
