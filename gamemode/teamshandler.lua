@@ -41,17 +41,27 @@ RegisterNetEvent("ServeThePresident:ReceiveTeamInfos")
 AddEventHandler("ServeThePresident:ReceiveTeamInfos", function(PresidentStatus, VicePresidentStatus, TerroristsStatus, CiviliansStatus, BodyGuardsStatus)
 	if not PresidentStatus then
 		TriggerEvent("menu:setGreyedOut", true, ids["President"])
+	elseif PresidentStatus
+		TriggerEvent("menu:setGreyedOut", false, ids["President"])
 	end
 	if not VicePresidentStatus then
 		TriggerEvent("menu:setGreyedOut", true, ids["VicePresident"])
+	elseif VicePresidentStatus
+		TriggerEvent("menu:setGreyedOut", false, ids["VicePresident"])
 	end
 	if not BodyGuardsStatus then
 		TriggerEvent("menu:setGreyedOut", true, ids["BodyGuard"])
+	elseif BodyGuardsStatus
+		TriggerEvent("menu:setGreyedOut", false, ids["BodyGuard"])
 	end
 	if not TerroristsStatus then
 		TriggerEvent("menu:setGreyedOut", true, ids["Terrorist"])
+	elseif TerroristsStatus
+		TriggerEvent("menu:setGreyedOut", false, ids["Terrorist"])
 	end
 	if not CiviliansStatus then
 		TriggerEvent("menu:setGreyedOut", true, ids["Civilian"])
+	elseif CiviliansStatus
+		TriggerEvent("menu:setGreyedOut", false, ids["Civilian"])
 	end
 end)
