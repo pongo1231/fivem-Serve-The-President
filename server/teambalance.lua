@@ -49,7 +49,7 @@ AddEventHandler("ServeThePresident:RequestTeamInfos", function()
     if CiviliansNumber - TerroristsNumber < 3 and CiviliansNumber - BodyGuardsNumber < 3 then
         CiviliansStatus = true
     end
-    if BodyGuardsNumber - CiviliansNumber < 3 ans BodyGuardsNumber - TerroristsNumber < 3 then
+    if BodyGuardsNumber - CiviliansNumber < 3 and BodyGuardsNumber - TerroristsNumber < 3 then
         BodyGuardsStatus = true
     end
     end
