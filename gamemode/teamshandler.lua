@@ -29,3 +29,29 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+
+Citizen.CreateThread(function()
+	while true do
+		Wait(500)
+		TriggerServerEvent("ServeThePresident:RequestTeamInfo")
+	end
+end)
+
+RegisterNetEvent("ServeThePresident:ReceiveTeamInfos")
+AddEventHandler("ServeThePresident:ReceiveTeamInfos", function(PresidentStatus, VicePresidentStatus, TerroristsStatus, CiviliansStatus, BodyGuardsStatus)
+	if not PresidentStatus then
+		TriggerEvent("menu:setGreyedOut", true, ids["President"])
+	end
+	if not VicePresidentStatus then
+		TriggerEvent("menu:setGreyedOut", true, ids["VicePresident"])
+	end
+	if not BodyGuardsStatus then
+		TriggerEvent("menu:setGreyedOut", true, ids["BodyGuard"])
+	end
+	if not TerroristsStatus then
+		TriggerEvent("menu:setGreyedOut", true, ids["Terrorist"])
+	end
+	if not CiviliansStatus then
+		TriggerEvent("menu:setGreyedOut", true, ids["Civilian"])
+	end
+end)
