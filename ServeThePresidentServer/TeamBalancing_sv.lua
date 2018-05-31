@@ -57,7 +57,11 @@ end)
 
 RegisterNetEvent("ServeThePresident:JoinTeam")
 AddEventHandler("ServeThePresident:JoinTeam", function(team)
-    _G[team][source] = GetPlayerIdentifiers(source)
+    if type(_G[team]) == table then
+        _G[team][source] = GetPlayerIdentifiers(source)
+    else
+        _G[team] = source
+    end
     local oldteam = GetPlayerTeam(source)
     if oldteam ~= nil then
         if type(oldteam) == table then
