@@ -53,7 +53,7 @@ AddEventHandler("ServeThePresident:RequestTeamInfos", function()
         BodyGuardsStatus = true
     end
     end
-    TriggerClientEvent("ServeThePresident:ReceiveTeamInfos", source, PresidentStatus, VicePresidentStatus, TerroristsStatus, CiviliansStatus, BodyGuardsStatus)
+    TriggerClientEvent("ServeThePresident:ReceiveTeamInfos", source, {["President"]=PresidentStatus, ["VicePresident"]=VicePresidentStatus, ["Terrorist"]=TerroristsStatus, ["Civilian"=]CiviliansStatus, ["BodyGuard"]=BodyGuardsStatus})
 end)
 
 RegisterNetEvent("ServeThePresident:JoinTeam")
