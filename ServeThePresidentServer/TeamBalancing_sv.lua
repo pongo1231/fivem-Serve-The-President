@@ -52,7 +52,20 @@ AddEventHandler("ServeThePresident:RequestTeamInfos", function()
     if BodyGuardsNumber - CiviliansNumber < 3 ans BodyGuardsNumber - TerroristsNumber < 3 then
         BodyGuardsStatus = true
     end
-    TriggerClientEvent("ServeThePresident", source, PresidentStatus, VicePresidentStatus, TerroristsStatus, CiviliansStatus, BodyGuardsStatus)
+    TriggerClientEvent("ServeThePresident:ReceiveTeamInfos", source, PresidentStatus, VicePresidentStatus, TerroristsStatus, CiviliansStatus, BodyGuardsStatus)
+end)
+
+RegisterNetEvent("ServeThePresident:JoinTeam")
+AddEventHandler("ServeThePresident:JoinTeam", function(team)
+    _G[team][source] = GetPlayerIdentifiers(source)
+    local oldteam = GetPlayerTeam(source)
+    if oldteam ~= nil then
+        if type(oldteam) == table then
+            _G[oldteam][source] = nil
+        else
+            _G[oldteam] = 666
+        end
+    end
 end)
 
 
@@ -74,4 +87,29 @@ function GetTableLength(t)
     local count = 0
     for _ in pairs(t) do count = count + 1 end
     return count
+end
+
+function GetPlayerTeam(id)
+    for k,v in pairs(Terrorists) do
+        if k == id then 
+            return "Terrorists" 
+        end
+    end
+    for k,v in pairs(Civilians) do
+        if k == id then 
+            return "Civilians" 
+        end
+    end
+    for k,v in pairs(BodyGuards) do
+        if k == id then 
+            return "BodyGuards" 
+        end
+    end
+    if President == id then
+        return "President"
+    end
+    if VicePresident == id then
+        return "VicePresident"
+    end
+    return nil
 end
