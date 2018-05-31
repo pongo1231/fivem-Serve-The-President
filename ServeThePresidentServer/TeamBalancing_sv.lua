@@ -36,7 +36,7 @@ AddEventHandler("ServeThePresident:RequestTeamInfos", function()
     local TerroristsNumber = GetTableLength(Terrorists)
     local CiviliansNumber = GetTableLength(Civilians)
     local BodyGuardsNumber = GetTableLength(BodyGuards)
-
+    if not VicePresident == source then
     if President == 666 then
         PresidentStatus = true
     end
@@ -51,6 +51,7 @@ AddEventHandler("ServeThePresident:RequestTeamInfos", function()
     end
     if BodyGuardsNumber - CiviliansNumber < 3 ans BodyGuardsNumber - TerroristsNumber < 3 then
         BodyGuardsStatus = true
+    end
     end
     TriggerClientEvent("ServeThePresident:ReceiveTeamInfos", source, PresidentStatus, VicePresidentStatus, TerroristsStatus, CiviliansStatus, BodyGuardsStatus)
 end)
