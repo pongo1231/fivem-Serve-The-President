@@ -1,0 +1,8 @@
+C:\Users\admin\source\repos\fivem-Serve-The-President\ServeThePresident\obj\Debug\ServeThePresident.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\fivem-Serve-The-President\ServeThePresident\bin\Debug\ServeThePresident.net.dll
+C:\Users\admin\source\repos\fivem-Serve-The-President\ServeThePresident\bin\Debug\ServeThePresident.net.pdb
+C:\Users\admin\source\repos\fivem-Serve-The-President\ServeThePresident\obj\Debug\ServeThePresident.csproj.CopyComplete
+C:\Users\admin\source\repos\fivem-Serve-The-President\ServeThePresident\obj\Debug\ServeThePresident.net.dll
+C:\Users\admin\source\repos\fivem-Serve-The-President\ServeThePresident\obj\Debug\ServeThePresident.net.pdb
+C:\Users\admin\source\repos\fivem-Serve-The-President\ServeThePresident\bin\Debug\NativeUI.dll
+C:\Users\admin\source\repos\fivem-Serve-The-President\ServeThePresident\obj\Debug\ServeThePresident.csprojResolveAssemblyReference.cache
