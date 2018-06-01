@@ -11,9 +11,11 @@ client_scripts {
 	"team/teamrelationships.lua",
 	"team/teamweapons.lua",
 	"team/teamblipcolors.lua",
+	"team/teamhelptexts.lua",
 
 	"gamemode/countdown.lua",
-	"gamemode/teamshandler.lua",
+	"gamemode/teamhelpdisplay.lua",
+	"gamemode/teamhandler.lua",
 
 	"player/spawner.lua",
 	"player/death.lua",

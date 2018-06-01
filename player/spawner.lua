@@ -59,6 +59,9 @@ AddEventHandler("stp:respawn", function(instant)
 	end
 
 	Spawner.SetTeamStuff()
+	if not TeamHelpDisplay.AlreadyDisplayedForTeam() then
+		TeamHelpDisplay.Display()
+	end
 
 	if not instant then
 		StopPlayerSwitch()

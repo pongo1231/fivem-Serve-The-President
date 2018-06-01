@@ -3,6 +3,7 @@ local currentTeam = TeamId.None
 CurrentTeam = {}
 function CurrentTeam.Update(team, instant)
 	currentTeam = team
+	TeamHelpDisplay.Stop()
 	Spawner.Respawn(instant)
 end
 
@@ -17,36 +18,8 @@ Citizen.CreateThread(function()
 		Wait(100)
 
 		if PlayerPedId() then
-			for i = 0, 32, 1 do
-				if NetworkIsPlayerConnected(i) then
-					local playerPed = GetPlayerPed(i)
-					if playerPed then
-						local team = DecorGetInt(playerPed, "_PLAYER_TEAM")
-						local relationship = TeamRelationships[CurrentTeam.Get()][team]
+			TeamHandler.HandleBlips()
 
-						SetPedAsEnemy(playerPed, relationship == TeamRelationshipType.Hostile)
-
-						local blip = GetBlipFromEntity(playerPed)
-						if relationship == TeamRelationshipType.Hostile and not team == TeamId.President and blip then
-							RemoveBlip(blip)
-						else
-							if not blip then
-								blip = AddBlipForEntity(playerPed)
-							end
-							SetBlipColour(blip, TeamBlipColors[team])
-						end
-					end
-				end
-			end
-		end
-	end
-end)
-
-Citizen.CreateThread(function()
-	while true do
-		Wait(100)
-
-		if PlayerPedId() then
 			local currentTeam = CurrentTeam.Get()
 			if currentTeam == TeamId.President or currentTeam == TeamId.Vice then
 				local tryingVehicle = GetVehiclePedIsTryingToEnter(PlayerPedId())
@@ -58,6 +31,31 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+
+TeamHandler = {}
+function TeamHandler.HandleBlips()
+	for i = 0, 32, 1 do
+		if NetworkIsPlayerConnected(i) then
+			local playerPed = GetPlayerPed(i)
+			if playerPed then
+				local team = DecorGetInt(playerPed, "_PLAYER_TEAM")
+				local relationship = TeamRelationships[CurrentTeam.Get()][team]
+
+				SetPedAsEnemy(playerPed, relationship == TeamRelationshipType.Hostile)
+
+				local blip = GetBlipFromEntity(playerPed)
+				if relationship == TeamRelationshipType.Hostile and not team == TeamId.President and blip then
+					RemoveBlip(blip)
+				else
+					if not blip then
+						blip = AddBlipForEntity(playerPed)
+					end
+					SetBlipColour(blip, TeamBlipColors[team])
+				end
+			end
+		end
+	end
+end
 
 AddTextEntry("_TEAMNONE_GUIDE", "Press ~INPUT_SELECT_CHARACTER_FRANKLIN~ to open the gamemode menu, then select Team Menu to choose a team.")
 Citizen.CreateThread(function()
