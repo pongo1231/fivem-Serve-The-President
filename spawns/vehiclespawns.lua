@@ -82,70 +82,70 @@ local vehicleSpawns = {
 
 local vehicleClassBlips = {
 	[0] = { -- Compacts
-		sprite = 326, entry = "_COMPACT", text = "Compact"
+		sprite = 326, entry = "_COMPACT", text = "Compact Spawn"
 	},
 	[1] = { -- Sedans
-		sprite = 326, entry = "_SEDAN", text = "Sedan"
+		sprite = 326, entry = "_SEDAN", text = "Sedan Spawn"
 	},
 	[2] = { -- SUVs
-		sprite = 326, entry = "_SUV", text = "SUV"
+		sprite = 326, entry = "_SUV", text = "SUV Spawn"
 	},
 	[3] = { -- Coupes
-		sprite = 326, entry = "_COUPE", text = "Coupe"
+		sprite = 326, entry = "_COUPE", text = "Coupe Spawn"
 	},
 	[4] = { -- Muscle
-		sprite = 326, entry = "_MUSCLE", text = "Muscle"
+		sprite = 326, entry = "_MUSCLE", text = "Muscle Spawn"
 	},
 	[5] = { -- Sports Classics
-		sprite = 326, entry = "_SPORTC", text = "Sport Classic"
+		sprite = 326, entry = "_SPORTC", text = "Sport Classic Spawn"
 	},
 	[6] = { -- Sports
-		sprite = 326, entry = "_SPORT", text = "Sport"
+		sprite = 326, entry = "_SPORT", text = "Sport Spawn"
 	},
 	[7] = { -- Super
-		sprite = 326, entry = "_SUPER", text = "Super"
+		sprite = 326, entry = "_SUPER", text = "Super Spawn"
 	},
 	[8] = { -- Motorcycles
-		sprite = 348, entry = "_BIKE", text = "Motorcycle"
+		sprite = 348, entry = "_BIKE", text = "Motorcycle Spawn"
 	},
 	[9] = { -- Off-road
-		sprite = 326, entry = "_OFFROAD", text = "Off-road"
+		sprite = 326, entry = "_OFFROAD", text = "Off-road Spawn"
 	},
 	[10] = { -- Industrial
-		sprite = 326, entry = "_INDUSTRIAL", text = "Industrial"
+		sprite = 326, entry = "_INDUSTRIAL", text = "Industrial Spawn"
 	},
 	[11] = { -- Utility
-		sprite = 67, entry = "_UTIL", text = "Utility"
+		sprite = 67, entry = "_UTIL", text = "Utility Spawn"
 	},
 	[12] = { -- Vans
-		sprite = 326, entry = "_VAN", text = "Van"
+		sprite = 326, entry = "_VAN", text = "Van Spawn"
 	},
 	[13] = { -- Cycles
-		sprite = 348, entry = "_CYCLE", text = "Cycle"
+		sprite = 348, entry = "_CYCLE", text = "Cycle Spawn"
 	},
 	[14] = { -- Boats
-		sprite = 427, entry = "_BOAT", text = "Boat"
+		sprite = 427, entry = "_BOAT", text = "Boat Spawn"
 	},
 	[15] = { -- Helicopters
-		sprite = 64, entry = "_HELI", text = "Helicopter"
+		sprite = 64, entry = "_HELI", text = "Helicopter Spawn"
 	},
 	[16] = { -- Planes
-		sprite = 307, entry = "_PLANE", text = "Plane"
+		sprite = 307, entry = "_PLANE", text = "Plane Spawn"
 	},
 	[17] = { -- Service
-		sprite = 67, entry = "_SERVICE", text = "Service"
+		sprite = 67, entry = "_SERVICE", text = "Service Spawn"
 	},
 	[18] = { -- Emergency
-		sprite = 326, entry = "_EMERGENCY", text = "Emergency"
+		sprite = 326, entry = "_EMERGENCY", text = "Emergency Spawn"
 	},
 	[19] = { -- Military
-		sprite = 426, entry = "_MILITARY", text = "Military"
+		sprite = 426, entry = "_MILITARY", text = "Military Spawn"
 	},
 	[20] = { -- Commercial
-		sprite = 326, entry = "_COMMERCIAL", text = "Commercial"
+		sprite = 326, entry = "_COMMERCIAL", text = "Commercial Spawn"
 	},
 	[21] = { -- Trains (never going to use them but why not)
-		sprite = 326, entry = "_TRAIN", text = "Train"
+		sprite = 326, entry = "_TRAIN", text = "Train Spawn"
 	}
 }
 
