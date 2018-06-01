@@ -1,5 +1,7 @@
 local alreadyInited
 
+DecorRegister("_PLAYER_TEAM", 3)
+
 Spawner = {}
 function Spawner.Respawn(instant)
 	TriggerEvent("stp:respawn", instant)
@@ -7,16 +9,21 @@ end
 
 function Spawner.Init()
 	if not alreadyInited then
-		--exports.spawnmanager:setAutoSpawn(false)
 		CurrentTeam.Update(TeamId.None, true)
+
+		-- Workaround
+		Wait(1000)
+		exports.spawnmanager:setAutoSpawn(false)
 
 		alreadyInited = true
 	end
 end
 
-if PlayerPedId() then
-	Spawner.Init()
-end
+Citizen.CreateThread(function()
+	if NetworkIsSessionStarted() and not GetIsLoadingScreenActive() then
+		Spawner.Init()
+	end
+end)
 AddEventHandler("playerSpawned", Spawner.Init)
 
 AddEventHandler("stp:respawn", function(instant)
