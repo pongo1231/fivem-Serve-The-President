@@ -3,20 +3,20 @@ TeamWeapons = {
 	
 	},
 	[TeamId.Vice] = {
-		453432689
+		"WEAPON_SNSPISTOL"
 	},
 	[TeamId.Bodyguard] = {
-		1737195953,
-		453432689,
-		736523883
+		"WEAPON_NIGHTSTICK",
+		"WEAPON_PISTOL",
+		"WEAPON_SMG"
 	},
 	[TeamId.Terrorist] = {
-		1593441988,
-		-1074790547,
-		-538741184,
+		"WEAPON_KNIFE",
+		"WEAPON_PISTOL",
+		"WEAPON_ASSAULTRIFLE",
 	},
 	[TeamId.Civil] = {
-		-1786099057,
-		453432689
+		"WEAPON_BAT",
+		"WEAPON_PISTOL"
 	}
 }

@@ -84,7 +84,7 @@ function Spawner.SetTeamStuff()
 		TriggerMusicEvent("BST_STOP")
 
 		for _, weapon in ipairs(TeamWeapons[CurrentTeam.Get()]) do
-			GiveWeaponToPed(PlayerPedId(), weapon, 100, true, false)
+			GiveWeaponToPed(PlayerPedId(), GetHashKey(weapon), 100, true, false)
 		end
 	end
 end
