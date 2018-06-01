@@ -2,6 +2,8 @@ resource_manifest_version "44febabe-d386-4d18-afbe-5e627f4af937"
 
 client_scripts {
 	"env/timesync.lua",
+	"env/env.lua",
+
 	"menu/teammenu.lua",
 	"util/entityiterator.lua",
 
@@ -24,4 +26,7 @@ client_scripts {
 	"spawns/weaponspawns.lua"
 }
 
-server_script "server/teambalance.lua"
+server_scripts {
+	"server/teambalance.lua",
+	"server/countdown.lua"
+}

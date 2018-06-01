@@ -9,19 +9,6 @@ end
 
 Citizen.CreateThread(function()
 	while true do
-		Wait(1000)
-
-		if running then
-			counter = counter - 1
-			if not counter then
-				running = false
-			end
-		end
-	end
-end)
-
-Citizen.CreateThread(function()
-	while true do
 		Wait(200)
 		if running then
 		TriggerServerEvent("ServeThePresident:CheckTimer", counter)
@@ -29,11 +16,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
-
-RegisterNetEvent("ServeThePresident:CorrectTimer")
-AddEventHandler("ServeThePresident:CorrectTimer", function(newtimer)
-	counter = newtimer
-end)
 --[[Citizen.CreateThread(function()
 	local scaleform = RequestScaleformMovie("MP_CELEBRATION")
 	while not HasScaleformMovieLoaded(scaleform) do
