@@ -12,7 +12,7 @@ TeamHelpTexts = {
 		entry = "_HELP_BODYGUARD", text = "You are a ~b~Bodyguard~w~. Protect the ~g~President~w~ from incoming attacks until the time runs out."
 	},
 	[TeamId.Terrorist] = {
-		entry = "_HELP_TERRORIST", text = "You are a ~r~Terrorist~w~. Kill the guarded ~r~President~w~ until the time runs out."
+		entry = "_HELP_TERRORIST", text = "You are a ~r~Terrorist~w~. Kill the guarded ~g~President~w~ until the time runs out."
 	},
 	[TeamId.Civil] = {
 		entry = "_HELP_CIVIL", text = "You are a ~o~Civilian~w~. Feel free to help any team out or to just roam around."
