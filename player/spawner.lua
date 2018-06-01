@@ -7,7 +7,7 @@ end
 
 function Spawner.Init()
 	if not alreadyInited then
-		exports.spawnmanager:setAutoSpawn(false)
+		--exports.spawnmanager:setAutoSpawn(false)
 		CurrentTeam.Update(TeamId.None, true)
 
 		alreadyInited = true
@@ -36,7 +36,8 @@ AddEventHandler("stp:respawn", function(instant)
 			Wait(1)
 		end
 		local decoyPed = CreatePed(4, decoyPedModel, spawnPos.x, spawnPos.y, spawnPos.z, 0.0, false, false)
-		StartPlayerSwitch(PlayerPedId(), decoyPed, 8, GetIdealPlayerSwitchType(currentPos.x, currentPos.y, currentPos.z, spawnPos.x, spawnPos.y, spawnPos.z))
+		StartPlayerSwitch(PlayerPedId(), decoyPed, 8, GetIdealPlayerSwitchType(currentPos.x, currentPos.y, currentPos.z,
+			spawnPos.x, spawnPos.y, spawnPos.z))
 		DeletePed(decoyPed)
 
 		while GetPlayerSwitchState() ~= 8 and GetPlayerSwitchState() ~= 10 do

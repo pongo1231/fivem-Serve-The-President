@@ -1,4 +1,4 @@
-VehicleSpawns = {
+local vehicleSpawns = {
 	{model = "maverick", x = 2819.8, y = -638.9, z = 1.8, h = 0.0},
 	{model = "carbonrs", x = 1369.1, y = -581.7, z = 73.9, h = 0.0},
 	{model = "dominator", x = -972.2, y = -1020.9, z = 40.5, h = 0.0},
@@ -43,7 +43,7 @@ VehicleSpawns = {
 	{model = "riot", x = -310.7, y = 227.6, z = 87.3, h = 281.3},
 	{model = "frogger2", x = -142.0, y = 205.5, z = 91.5, h = 268.4},
 	{model = "reaper", x = 67.1, y = 121.4, z = 78.5, h = 160.2},
-	{model = "firetruck", x = 546.9, y = -139.7, z = 58.4, h = 88.3},
+	{model = "firetruk", x = 546.9, y = -139.7, z = 58.4, h = 88.3},
 	{model = "opressor", x = 1133.2, y = 83.2, z = 80.2, h = 208.1},
 	{model = "schafter5", x = 1115.0, y = 50.9, z = 80.2, h = 271.1},
 	{model = "limo2", x = 866.8, y = -286.0, z = 65.1, h = 109.7},
@@ -70,8 +70,8 @@ VehicleSpawns = {
 	{model = "fbi", x = 2542.2, y = -465.8, z = 93.1, h = 311.0},
 	{model = "buzzard", x = 2511.1, y = -426.7, z = 118.2, h = 45.5},
 	{model = "policeb", x = 2575.2, y = -379.1, z = 93.0, h = 0.0},
-	{model = "fib2", x = 2575.6, y = -365.9, z = 93.0, h = 0.0},
-	{model = "xls2", x = 2598.1, y = -323.3, z = 92.5, h = 80.2},
+	{model = "fbi2", x = 2575.6, y = -365.9, z = 93.0, h = 0.0},
+	{model = "xls2", x = 2598.1, y = -323.3, z = 92.5, h = 180.0},
 	{model = "seashark", x = 2853.6, y = -667.8, z = -0.5, h = 249.1},
 	{model = "monster", x = 2704.6, y = -829.9, z = 26.3, h = 19.3},
 	{model = "maverick", x = 1892.5, y = -886.9, z = 118.5, h = 123.6},
@@ -81,34 +81,123 @@ VehicleSpawns = {
 }
 
 local vehicleClassBlips = {
-	[0] = 326,
-	[1] = 326,
-	[2] = 326,
-	[3] = 326,
-	[4] = 326,
-	[5] = 326,
-	[6] = 326,
-	[7] = 326,
-	[8] = 348,
-	[9] = 326,
-	[10] = 326,
-	[11] = 67,
-	[12] = 326,
-	[13] = 348,
-	[14] = 427,
-	[15] = 64,
-	[16] = 307,
-	[17] = 67,
-	[18] = 326,
-	[19] = 426,
-	[20] = 326,
-	[21] = 326
+	[0] = { -- Compacts
+		sprite = 326, entry = "_COMPACT", text = "Compact"
+	},
+	[1] = { -- Sedans
+		sprite = 326, entry = "_SEDAN", text = "Sedan"
+	},
+	[2] = { -- SUVs
+		sprite = 326, entry = "_SUV", text = "SUV"
+	},
+	[3] = { -- Coupes
+		sprite = 326, entry = "_COUPE", text = "Coupe"
+	},
+	[4] = { -- Muscle
+		sprite = 326, entry = "_MUSCLE", text = "Muscle"
+	},
+	[5] = { -- Sports Classics
+		sprite = 326, entry = "_SPORTC", text = "Sport Classic"
+	},
+	[6] = { -- Sports
+		sprite = 326, entry = "_SPORT", text = "Sport"
+	},
+	[7] = { -- Super
+		sprite = 326, entry = "_SUPER", text = "Super"
+	},
+	[8] = { -- Motorcycles
+		sprite = 348, entry = "_BIKE", text = "Motorcycle"
+	},
+	[9] = { -- Off-road
+		sprite = 326, entry = "_OFFROAD", text = "Off-road"
+	},
+	[10] = { -- Industrial
+		sprite = 326, entry = "_INDUSTRIAL", text = "Industrial"
+	},
+	[11] = { -- Utility
+		sprite = 67, entry = "_UTIL", text = "Utility"
+	},
+	[12] = { -- Vans
+		sprite = 326, entry = "_VAN", text = "Van"
+	},
+	[13] = { -- Cycles
+		sprite = 348, entry = "_CYCLE", text = "Cycle"
+	},
+	[14] = { -- Boats
+		sprite = 427, entry = "_BOAT", text = "Boat"
+	},
+	[15] = { -- Helicopters
+		sprite = 64, entry = "_HELI", text = "Helicopter"
+	},
+	[16] = { -- Planes
+		sprite = 307, entry = "_PLANE", text = "Plane"
+	},
+	[17] = { -- Service
+		sprite = 67, entry = "_SERVICE", text = "Service"
+	},
+	[18] = { -- Emergency
+		sprite = 326, entry = "_EMERGENCY", text = "Emergency"
+	},
+	[19] = { -- Military
+		sprite = 426, entry = "_MILITARY", text = "Military"
+	},
+	[20] = { -- Commercial
+		sprite = 326, entry = "_COMMERCIAL", text = "Commercial"
+	},
+	[21] = { -- Trains (never going to use them but why not)
+		sprite = 326, entry = "_TRAIN", text = "Train"
+	}
 }
 
-for _, vehicleSpawn in ipairs(VehicleSpawns) do
+DecorRegister("_STP_VEHICLE", 2)
+
+for _, vehicleSpawn in ipairs(vehicleSpawns) do
 	local blip = AddBlipForCoord(vehicleSpawn.x, vehicleSpawn.y, vehicleSpawn.z)
 	SetBlipAsShortRange(blip, true)
 
-	SetBlipSprite(blip,
-		vehicleClassBlips[GetVehicleClassFromName(GetHashKey(vehicleSpawn.model))])
+	local blipinfo = vehicleClassBlips[GetVehicleClassFromName(GetHashKey(vehicleSpawn.model))]
+	SetBlipSprite(blip, blipinfo.sprite)
+	AddTextEntry(blipinfo.entry, blipinfo.text)
+	SetBlipNameFromTextFile(blip, blipinfo.entry)
 end
+
+Citizen.CreateThread(function()
+	while true do
+		Wait(1000)
+
+		if PlayerPedId() then
+			local playerCoords = GetEntityCoords(PlayerPedId(), true)
+			for _, vehicleSpawn in ipairs(vehicleSpawns) do
+				if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, vehicleSpawn.x, vehicleSpawn.y,
+					vehicleSpawn.z, true) < 200.0 then
+						if not IsModelValid(GetHashKey(vehicleSpawn.model)) then
+							print("Model " .. vehicleSpawn.model .. " in invalid. Fix this RIGHT NOW!")
+						else
+							local canSpawn = true
+							for nearbyVehicle in EnumerateVehicles() do
+								local nearbyVehicleCoords = GetEntityCoords(nearbyVehicle, true)
+								if GetDistanceBetweenCoords(nearbyVehicleCoords.x, nearbyVehicleCoords.y, nearbyVehicleCoords.z,
+									vehicleSpawn.x, vehicleSpawn.y, vehicleSpawn.z, true) < 100.0
+									and GetEntityModel(nearbyVehicle) == GetHashKey(vehicleSpawn.model)
+									and DecorExistOn(nearbyVehicle, "_STP_VEHICLE") then
+										canSpawn = false
+								end
+							end
+
+							if canSpawn then
+								local model = GetHashKey(vehicleSpawn.model)
+								RequestModel(model)
+								while not HasModelLoaded(model) do
+									Wait(1)
+								end
+								local vehicle = CreateVehicle(model, vehicleSpawn.x, vehicleSpawn.y, vehicleSpawn.z,
+									vehicleSpawn.h, true, false)
+								DecorSetBool(vehicle, "_STP_VEHICLE", true)
+								SetVehicleAsNoLongerNeeded(vehicle)
+							end
+						end
+				end
+			end
+		end
+	end
+end)

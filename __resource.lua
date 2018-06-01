@@ -19,8 +19,8 @@ client_scripts {
 	"gamemode/countdown.lua",
 	"gamemode/teamshandler.lua",
 
-	"spawns/spawner.lua",
-	"spawns/vehiclespawns.lua"
+	"spawns/vehiclespawns.lua",
+	"spawns/weaponspawns.lua"
 }
 
 server_script "server/teambalance.lua"
