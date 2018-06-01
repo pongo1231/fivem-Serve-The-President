@@ -14,6 +14,7 @@ client_scripts {
 
 	"player/spawner.lua",
 	"player/death.lua",
+	"player/teamhandler.lua",
 
 	"gamemode/countdown.lua",
 	"gamemode/teamshandler.lua",

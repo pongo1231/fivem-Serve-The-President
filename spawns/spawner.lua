@@ -22,6 +22,7 @@ Citizen.CreateThread(function()
 								playerCoords.y, playerCoords.z,
 								vehicleSpawn.x, vehicleSpawn.y, vehicleSpawn.z,
 								true) < 100.0
+								and GetEntityModel(nearbyVehicle) == GetHashKey(vehicleSpawn.model)
 								and DecorExistOn(nearbyVehicle, "_STP_VEHICLE") then
 								canSpawn = false
 							end

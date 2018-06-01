@@ -29,3 +29,20 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+
+Citizen.CreateThread(function()
+	while true do
+		Wait(100)
+
+		if PlayerPedId() then
+			local currentTeam = CurrentTeam.Get()
+			if currentTeam == TeamId.President or currentTeam == TeamId.Vice then
+				local tryingVehicle = GetVehiclePedIsTryingToEnter(PlayerPedId())
+				if GetVehicleClass(tryingVehicle) == 15 or GetVehicleClass(tryingVehicle) == 16 then
+					TaskPause(PlayerPedId(), 0)
+					TriggerEvent("chatMessage", "", {255, 0, 0}, "You can't enter helis/planes as (Vice) President!")
+				end
+			end
+		end
+	end
+end)
