@@ -25,7 +25,9 @@ Citizen.CreateThread(function()
 				local tryingVehicle = GetVehiclePedIsTryingToEnter(PlayerPedId())
 				if GetVehicleClass(tryingVehicle) == 15 or GetVehicleClass(tryingVehicle) == 16 then
 					TaskPause(PlayerPedId(), 0)
-					TriggerEvent("chatMessage", "", {255, 0, 0}, "You can't enter helis/planes as (Vice) President!")
+					BeginTextCommandPrint("STRING")
+					AddTextComponentSubstringPlayerName("~r~You can't enter helis/planes as (Vice) President!")
+					EndTextCommandPrint(5000, true)
 				end
 			end
 		end
