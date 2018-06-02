@@ -23,7 +23,7 @@ client_scripts {
 	"player/death.lua",
 
 	"spawns/vehiclespawns.lua",
-	"spawns/weaponspawns.lua"
+	"spawns/pickupspawns.lua"
 }
 
 server_scripts {
