@@ -60,18 +60,6 @@ function TeamHandler.HandleBlipsAndFriendly()
 	end
 end
 
-AddTextEntry("_TEAMNONE_GUIDE", "Press ~INPUT_SELECT_CHARACTER_FRANKLIN~ to open the gamemode menu, then select Team Menu to choose a team.")
-Citizen.CreateThread(function()
-	while true do
-		Wait(1)
-
-		if CurrentTeam.Get() == TeamId.None then
-			BeginTextCommandPrint(_TEAMNONE_GUIDE)
-			DisplayHelpTextThisFrame("_TEAMNONE_GUIDE", 0)
-		end
-	end
-end)
-
 -- I'll look at this later
 
 --[[Citizen.CreateThread(function()
