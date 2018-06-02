@@ -63,7 +63,7 @@ local vehicleSpawns = {
 	{model = "schafter6", x = 2528.9, y = -384.6, z = 93.0, h = 271.2},
 	{model = "schafter5", x = 2563.1, y = -383.9, z = 93.0, h = 0.0},
 	{model = "limo2", x = 2519.6, y = -310.1, z = 93.0, h = 268.7},
-	{model = "washington", x = 5244.9, y = -316.6, z = 93.0, h = 188.3},
+	{model = "washington", x = 2544.9, y = -316.6, z = 93.0, h = 188.3},
 	{model = "buzzard2", x = 2526.1, y = -391.5, z = 93.0, h = 356.5},
 	{model = "volatus", x = 2526.1, y = -375.8, z = 93.0, h = 352.5},
 	{model = "riot", x = 2540.8, y = -447.8, z = 93.0, h = 314.3},
@@ -77,7 +77,13 @@ local vehicleSpawns = {
 	{model = "maverick", x = 1892.5, y = -886.9, z = 118.5, h = 123.6},
 	{model = "stretch", x = 1657.4, y = -894.2, z = 66.9, h = 229.9},
 	{model = "buzzard", x = -332.1, y = -1962.5, z = 66.5, h = 45.1},
-	{model = "brickade", x = -753.9, y = -2025.5, z = 8.8, h = 352.6}
+	{model = "brickade", x = -753.9, y = -2025.5, z = 8.8, h = 352.6},
+	{model = "sabregt2", x = -112.2, y = -1414.1, z = 29.6, h = 187.9},
+	{model = "voodoo2", x = -229.0, y = -1700.8, z = 33.5, h = 304.3},
+	{model = "sultanrs", x = 105.5, y = -1940.9, z = 20.3, h = 50.0},
+	{model = "voltic2", x = 375.8, y = -1692.3, z = 47.8, h = 323.2},
+	{model = "buffalo3", x = 402.9, y = -1633.8, z = 28.8, h = 320.4},
+	{model = "comet", x = 831.8, y = -1517.1, z = 11.0, h = 307.6}
 }
 
 local vehicleClassBlips = {
