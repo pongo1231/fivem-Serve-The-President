@@ -9,10 +9,10 @@ end
 
 function Spawner.Init()
 	if not alreadyInited then
-		CurrentTeam.Update(TeamId.None, true)
-
 		-- Workaround
 		Wait(1000)
+		CurrentTeam.Update(TeamId.None, true)
+
 		exports.spawnmanager:setAutoSpawn(false)
 
 		alreadyInited = true
