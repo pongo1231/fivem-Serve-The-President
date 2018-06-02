@@ -15,7 +15,7 @@ local pickupSpawns = {
 	{ptype = "ARMOUR_STANDARD", x = 2528.0, y = -416.4, z = 94.1},
 	{ptype = "WEAPON_ADVANCEDRIFLE", x = 2513.7, y = -405.8, z = 94.1},
 	{ptype = "WEAPON_GUSENBERG", x = 1691.3, y = -1672.8, z = 111.5},
-	{ptype = "WEAPON_MINIGUN", x = 1703.1, y = -1714.8, z = 117.2}
+	{ptype = "WEAPON_MINIGUN", x = 1703.1, y = -1714.8, z = 120.0}
 }
 
 local weaponGroupBlips = {
