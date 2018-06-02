@@ -18,7 +18,7 @@ Citizen.CreateThread(function()
 		Wait(100)
 
 		if PlayerPedId() then
-			TeamHandler.HandleBlips()
+			TeamHandler.HandleBlipsAndFriendly()
 
 			local currentTeam = CurrentTeam.Get()
 			if currentTeam == TeamId.President or currentTeam == TeamId.Vice then
@@ -33,22 +33,25 @@ Citizen.CreateThread(function()
 end)
 
 TeamHandler = {}
-function TeamHandler.HandleBlips()
-	for i = 0, 32, 1 do
+function TeamHandler.HandleBlipsAndFriendly()
+	for i = 0, 32 do
 		if NetworkIsPlayerConnected(i) then
 			local playerPed = GetPlayerPed(i)
-			if playerPed then
+			if i ~= PlayerId() and DoesEntityExist(playerPed) then
 				local team = DecorGetInt(playerPed, "_PLAYER_TEAM")
 				local relationship = TeamRelationships[CurrentTeam.Get()][team]
 
 				SetPedAsEnemy(playerPed, relationship == TeamRelationshipType.Hostile)
 
 				local blip = GetBlipFromEntity(playerPed)
-				if relationship == TeamRelationshipType.Hostile and not team == TeamId.President and blip then
-					RemoveBlip(blip)
+				if relationship == TeamRelationshipType.Hostile and team ~= TeamId.President then
+					if DoesBlipExist(blip) then
+						RemoveBlip(blip)
+					end
 				else
-					if not blip then
+					if not DoesBlipExist(blip) then
 						blip = AddBlipForEntity(playerPed)
+						ShowHeadingIndicatorOnBlip(blip, true)
 					end
 					SetBlipColour(blip, TeamBlipColors[team])
 				end

@@ -48,7 +48,7 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(1000)
 
-		if PlayerPedId() then
+		if DoesEntityExist(PlayerPedId()) then
 			local playerCoords = GetEntityCoords(PlayerPedId(), true)
 			for _, weaponSpawn in ipairs(weaponSpawns) do
 				if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, weaponSpawn.x, weaponSpawn.y,

@@ -9,7 +9,7 @@ end
 
 function Spawner.Init()
 	if not alreadyInited then
-		CurrentTeam.Update(TeamId.None, true)
+		Spawner.Respawn(true)
 
 		-- Workaround
 		Wait(1000)
@@ -20,7 +20,7 @@ function Spawner.Init()
 end
 
 Citizen.CreateThread(function()
-	if NetworkIsSessionStarted() and not GetIsLoadingScreenActive() then
+	if DoesEntityExist(PlayerPedId()) then
 		Spawner.Init()
 	end
 end)

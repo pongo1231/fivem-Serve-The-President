@@ -5,7 +5,7 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(100)
 
-		if PlayerPedId() and IsEntityDead(PlayerPedId()) then
+		if DoesEntityExist(PlayerPedId()) and IsEntityDead(PlayerPedId()) then
 			TeamMenu.GreyOut(true)
 			drawDeathScaleform = true
 

@@ -11,7 +11,7 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(200)
 		if running then
-		TriggerServerEvent("ServeThePresident:CheckTimer", counter)
+			TriggerServerEvent("ServeThePresident:CheckTimer", counter)
 		end
 	end
 end)
