@@ -9,7 +9,7 @@ end
 
 function Spawner.Init()
 	if not alreadyInited then
-		Spawner.Respawn(true)
+		CurrentTeam.Update(TeamId.None, true)
 
 		-- Workaround
 		Wait(1000)

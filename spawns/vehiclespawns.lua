@@ -193,7 +193,7 @@ Citizen.CreateThread(function()
 								end
 								local vehicle = CreateVehicle(model, vehicleSpawn.x, vehicleSpawn.y, vehicleSpawn.z,
 									vehicleSpawn.h, true, false)
-								DecorSetBool(vehicle, "_STP_VEHICLE", i)
+								DecorSetInt(vehicle, "_STP_VEHICLE", i)
 								SetVehicleAsNoLongerNeeded(vehicle)
 							end
 						end

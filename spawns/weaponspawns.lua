@@ -69,6 +69,7 @@ Citizen.CreateThread(function()
 							if canSpawn then
 								local pickup = CreatePortablePickup(GetHashKey(weaponSpawn.pickup), weaponSpawn.x, weaponSpawn.y,
 									weaponSpawn.z, true, GetHashKey(weaponSpawn.pickup))
+								CreatePickup(pickupHash, posX, posY, posZ, p4, value, p6, modelHash)
 								SetObjectAsNoLongerNeeded(pickup)
 							end
 						end
