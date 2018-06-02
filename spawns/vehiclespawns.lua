@@ -149,7 +149,7 @@ local vehicleClassBlips = {
 	}
 }
 
-DecorRegister("_STP_VEHICLE", 2)
+DecorRegister("_STP_VEHICLE", 3)
 
 for _, vehicleSpawn in ipairs(vehicleSpawns) do
 	local blip = AddBlipForCoord(vehicleSpawn.x, vehicleSpawn.y, vehicleSpawn.z)
@@ -167,7 +167,7 @@ Citizen.CreateThread(function()
 
 		if DoesEntityExist(PlayerPedId()) then
 			local playerCoords = GetEntityCoords(PlayerPedId(), true)
-			for _, vehicleSpawn in ipairs(vehicleSpawns) do
+			for i, vehicleSpawn in ipairs(vehicleSpawns) do
 				if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, vehicleSpawn.x, vehicleSpawn.y,
 					vehicleSpawn.z, true) < 200.0 then
 						if not IsModelValid(GetHashKey(vehicleSpawn.model)) then
@@ -179,7 +179,8 @@ Citizen.CreateThread(function()
 								if GetDistanceBetweenCoords(nearbyVehicleCoords.x, nearbyVehicleCoords.y, nearbyVehicleCoords.z,
 									vehicleSpawn.x, vehicleSpawn.y, vehicleSpawn.z, true) < 100.0
 									and GetEntityModel(nearbyVehicle) == GetHashKey(vehicleSpawn.model)
-									and DecorExistOn(nearbyVehicle, "_STP_VEHICLE") then
+									and DecorExistOn(nearbyVehicle, "_STP_VEHICLE")
+									and DecorGetInt(nearbyVehicle, "_STP_VEHICLE") == i then
 										canSpawn = false
 								end
 							end
@@ -192,7 +193,7 @@ Citizen.CreateThread(function()
 								end
 								local vehicle = CreateVehicle(model, vehicleSpawn.x, vehicleSpawn.y, vehicleSpawn.z,
 									vehicleSpawn.h, true, false)
-								DecorSetBool(vehicle, "_STP_VEHICLE", true)
+								DecorSetBool(vehicle, "_STP_VEHICLE", i)
 								SetVehicleAsNoLongerNeeded(vehicle)
 							end
 						end
