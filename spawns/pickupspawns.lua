@@ -98,6 +98,6 @@ for _, pickupSpawn in ipairs(pickupSpawns) do
 	SetBlipNameFromTextFile(blip, blipinfo.entry)
 
 	local pickup = CreatePickupRotate(GetHashKey("PICKUP_" .. pickupSpawn.ptype), pickupSpawn.x, pickupSpawn.y,
-		pickupSpawn.z, 0.0, 0.0, 0.0, 8, GetRandomIntInRange(1, 100))
+		pickupSpawn.z, 0.0, 0.0, 0.0, 8, 100)
 	SetPickupRegenerationTime(pickup, 60)
 end
