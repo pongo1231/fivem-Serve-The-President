@@ -9,30 +9,35 @@ end
 
 Citizen.CreateThread(function()
 	while true do
-		Wait(200)
+		Wait(1000)
+
 		if running then
-			TriggerServerEvent("ServeThePresident:CheckTimer", counter)
+			counter = counter - 1
+			if counter == 0 then
+				running = false
+			end
 		end
 	end
 end)
 
---[[Citizen.CreateThread(function()
-	local scaleform = RequestScaleformMovie("MP_CELEBRATION")
-	while not HasScaleformMovieLoaded(scaleform) do
-		Wait(1)
-	end
-
+Citizen.CreateThread(function()
 	while true do
 		Wait(1)
 
-		if running then
-			PushScaleformMovieFunction(scaleform, "startCounter")
-			PushScaleformMovieFunctionParameterInt(0)
-			PushScaleformMovieFunctionParameterInt(255)
-			PushScaleformMovieFunctionParameterInt(10)
-			PushScaleformMovieFunctionParameterInt(100)
-			PopScaleformMovieFunction()
-			DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255, 0)
+		if running and CurrentTeam.Get() ~= TeamId.None then
+			DrawRect(0.5, 0.05, 0.2, 0.1, 0, 0, 0, 155, 0)
+
+		    BeginTextCommandDisplayText("STRING")
+			SetTextFont(4)
+			SetTextScale(1.5, 1.5)
+			SetTextColour(255, 255, 255, 255)
+
+			local seconds = counter % 60
+			local minutes = math.floor(counter / 60)
+			AddTextComponentSubstringPlayerName(string.format("%02i:%02i", minutes, seconds))
+			EndTextCommandDisplayText(0.465, 0.005)
 		end
 	end
-end)]]--
+end)
+
+Countdown.Set(1800)

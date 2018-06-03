@@ -112,7 +112,8 @@ local vehicleSpawns = {
 	{model = "vestra", x = -443.7, y = -2449.8, z = 5.2, h = 230.2},
 	{model = "opressor", x = -407.3, y = -2830.7, z = 5.2, h = 131.8},
 	{model = "seashark", x = -537.1, y = -2919.0, z = 1.0, h = 111.0},
-	{model = "hakuchou", x = -1836.0, y = -382.0, z = 49.3, h = 54.6}
+	{model = "hakuchou", x = -1836.0, y = -382.0, z = 49.3, h = 54.6},
+	{model = "mesa", x = -2077.0, y = -318.2, z = 12.4, h = 174.8}
 }
 
 local vehicleClassBlips = {

@@ -18,6 +18,7 @@ client_scripts {
 	"gamemode/countdown.lua",
 	"gamemode/teamhelpdisplay.lua",
 	"gamemode/teamhandler.lua",
+	"gamemode/invincibletime.lua",
 
 	"player/spawner.lua",
 	"player/death.lua",

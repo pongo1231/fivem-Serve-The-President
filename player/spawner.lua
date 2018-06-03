@@ -94,6 +94,8 @@ function Spawner.SetTeamStuff()
 		FreezeEntityPosition(PlayerPedId(), false)
 		TriggerMusicEvent("BST_STOP")
 
+		InvincibleTime.Start()
+
 		for _, weapon in ipairs(TeamWeapons[CurrentTeam.Get()]) do
 			GiveWeaponToPed(PlayerPedId(), GetHashKey(weapon), 100, true, false)
 		end
