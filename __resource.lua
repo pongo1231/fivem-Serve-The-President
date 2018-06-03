@@ -28,6 +28,7 @@ client_scripts {
 }
 
 server_scripts {
-	"server/teambalance.lua",
-	"server/countdown.lua"
+	--"server/teambalance.lua",
+	"server/countdown.lua",
+	"server/invincibletime.lua"
 }

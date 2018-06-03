@@ -34,6 +34,7 @@ AddEventHandler("stp:respawn", function(instant)
 
 	if not instant then
 		TeamMenu.GreyOut(true)
+		SetEntityInvincible(PlayerPedId(), true)
 
 		local currentPos = GetEntityCoords(PlayerPedId(), true)
 
@@ -94,7 +95,7 @@ function Spawner.SetTeamStuff()
 		FreezeEntityPosition(PlayerPedId(), false)
 		TriggerMusicEvent("BST_STOP")
 
-		InvincibleTime.Start()
+		InvincibleTime.Request()
 
 		for _, weapon in ipairs(TeamWeapons[CurrentTeam.Get()]) do
 			GiveWeaponToPed(PlayerPedId(), GetHashKey(weapon), 100, true, false)

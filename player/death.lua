@@ -10,12 +10,16 @@ Citizen.CreateThread(function()
 			drawDeathScaleform = true
 
 			PlaySoundFrontend(-1, "Bed", "WastedSounds", true)
-			TriggerMusicEvent("KILL_LIST_START_MUSIC")
+			if Countdown.Get() and Countdown.Get() > 30 then
+				TriggerMusicEvent("KILL_LIST_START_MUSIC")
+			end
 			DisplayRadar(false)
 
 			StartScreenEffect("DeathFailMPIn", 0, false)
 			Wait(10000)
-			TriggerMusicEvent("KILL_LIST_STOP_MUSIC")
+			if Countdown.Get() and Countdown.Get() > 30 then
+				TriggerMusicEvent("KILL_LIST_STOP_MUSIC")
+			end
 
 			DoScreenFadeOut(500)
 			drawDeathScaleform = false

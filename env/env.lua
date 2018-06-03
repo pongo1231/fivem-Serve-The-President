@@ -3,5 +3,7 @@ Citizen.CreateThread(function()
 		Wait(500)
 
 		SetMaxWantedLevel(0)
+		SetAudioFlag("DisableFlightMusic", true)
+		SetAudioFlag("WantedMusicDisabled", true)
 	end
 end)

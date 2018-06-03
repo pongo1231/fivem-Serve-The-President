@@ -1,25 +1,16 @@
-local running
-local counter
-local invincibleEndWarned = false
+local timeLeft
 
 InvincibleTime = {}
-function InvincibleTime.Start()
-	counter = 20
-	running = true
+function InvincibleTime.Request()
+	TriggerServerEvent("stp:server:requestInvincibleTime")
 end
 
-Citizen.CreateThread(function()
-	while true do
-		Wait(1000)
+RegisterNetEvent("stp:setInvincibleTime")
+AddEventHandler("stp:setInvincibleTime", function(time)
+	timeLeft = time
 
-		if running then
-			counter = counter - 1
-			if counter == 9 then
-				PlaySoundFrontend(-1, "10s", "MP_MISSION_COUNTDOWN_SOUNDSET", 1)
-			elseif counter == 0 then
-				running = false
-			end
-		end
+	if time == 9 then
+		PlaySoundFrontend(-1, "10s", "MP_MISSION_COUNTDOWN_SOUNDSET", 1)
 	end
 end)
 
@@ -27,19 +18,15 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(100)
 
-		if not running then
-			invincibleEndWarned = false
-		else
-			if counter == 1 then
+		if timeLeft and timeLeft > 0 then
+			if timeLeft == 1 then
+				Wait(1000)
 				SetEntityInvincible(PlayerPedId(), false)
 
-				if not invincibleEndWarned then
-					SetNotificationTextEntry("STRING")
-					AddTextComponentSubstringPlayerName("~r~You are not invincible anymore!")
-					DrawNotification(true, false)
-					StartScreenEffect("FocusOut", 1000, false)
-					invincibleEndWarned = true
-				end
+				SetNotificationTextEntry("STRING")
+				AddTextComponentSubstringPlayerName("~r~You are not invincible anymore!")
+				DrawNotification(true, false)
+				StartScreenEffect("FocusOut", 1000, false)
 			else
 				SetEntityInvincible(PlayerPedId(), true)
 			end
@@ -51,13 +38,13 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(1)
 
-		if running then
+		if timeLeft and timeLeft > 0 then
 		    BeginTextCommandDisplayText("STRING")
 			SetTextFont(4)
 			SetTextScale(1.0, 1.0)
 			SetTextColour(255, 255, 0, 255)
 
-			AddTextComponentSubstringPlayerName(string.format("%02i", counter % 60))
+			AddTextComponentSubstringPlayerName(string.format("%02i", timeLeft % 60))
 			EndTextCommandDisplayText(0.4925, 0.1)
 		end
 	end

@@ -1,21 +1,19 @@
-local running
 local counter
 
-RegisterNetEvent("stp:server_fetchCounter")
-AddEventHandler("stp:server_fetchCounter", function(cb)
-	cb(counter)
-end)
+Countdown = {}
+function Countdown.Set(time)
+	counter = time
+end
 
 Citizen.CreateThread(function()
 	while true do
 		Wait(1000)
 
-		if running then
+		if counter and counter > -1 then
 			counter = counter - 1
-			if not counter then
-				running = false
-				-- TODO: Stop Round
-			end
+			TriggerClientEvent("stp:setCountdown", -1, counter)
 		end
 	end
 end)
+
+Countdown.Set(90)
