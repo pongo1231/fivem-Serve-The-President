@@ -13,11 +13,10 @@ Citizen.CreateThread(function()
 			counter = counter - 1
 			TriggerClientEvent("stp:setCountdown", -1, counter)
 			if counter == 0 then
-				TriggerClientEvent("stp:teamToNone", -1)
-				Countdown.Set(1800)
+				Round.Restart()
 			end
 		end
 	end
 end)
 
-Countdown.Set(1800)
+Round.Restart()

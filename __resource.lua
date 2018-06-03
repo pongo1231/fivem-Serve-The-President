@@ -28,7 +28,7 @@ client_scripts {
 }
 
 server_scripts {
-	--"server/teambalance.lua",
+	"server/round.lua",
 	"server/countdown.lua",
 	"server/invincibletime.lua"
 }

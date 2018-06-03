@@ -64,6 +64,16 @@ function TeamHandler.HandleBlipsAndFriendly()
 	end
 end
 
+Citizen.CreateThread(function()
+	while true do
+		Wait(500)
+
+		if CurrentTeam.Get() == TeamId.None and not GetScreenEffectIsActive("FocusIn") then
+			StartScreenEffect("FocusIn")
+		end
+	end
+end)
+
 -- I'll look at this later
 
 --[[Citizen.CreateThread(function()

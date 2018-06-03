@@ -23,12 +23,16 @@ Citizen.CreateThread(function()
 
 			DoScreenFadeOut(500)
 			drawDeathScaleform = false
+
 			Wait(4000)
 			Spawner.Respawn(true)
 			StopScreenEffect("DeathFailMPIn")
 			DoScreenFadeIn(500)
 
 			TeamMenu.GreyOut(false)
+			if CurrentTeam.Get() == TeamId.President then
+				TriggerServerEvent("stp:server:presidentDied")
+			end
 		end
 	end
 end)
