@@ -11,7 +11,7 @@ Citizen.CreateThread(function()
 		Wait(1000)
 
 		for client, invincibleClient in pairs(invincibleClients) do
-			if invincibleClient.time and invincibleClient.time > -1 then
+			if invincibleClient.time and invincibleClient.time > 0 then
 				invincibleClient.time = invincibleClient.time - 1
 				TriggerClientEvent("stp:setInvincibleTime", client, invincibleClient.time)
 			end

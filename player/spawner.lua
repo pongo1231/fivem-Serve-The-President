@@ -48,8 +48,11 @@ AddEventHandler("stp:respawn", function(instant)
 			spawnPos.x, spawnPos.y, spawnPos.z))
 		DeletePed(decoyPed)
 
-		while GetPlayerSwitchState() ~= 8 and GetPlayerSwitchState() ~= 10 do
-			Wait(1)
+		-- Timeout after 10 seconds as it sometimes gets stuck
+		local forceEndTime = 10
+		while GetPlayerSwitchState() ~= 8 and GetPlayerSwitchState() ~= 10 and forceEndTime > 0 do
+			Wait(1000)
+			forceEndTime = forceEndTime - 1
 		end
 	end
 
