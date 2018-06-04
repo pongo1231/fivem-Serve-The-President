@@ -26,6 +26,7 @@ Citizen.CreateThread(function()
 				cloudOpacity = cloudOpacity + 0.1
 			else
 				cloudOpacity = cloudOpacity - 0.1
+			end
 		end
 	end
 end)
