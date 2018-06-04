@@ -2,8 +2,8 @@ local currentWeather
 local transitioningWeather
 
 RegisterNetEvent("stp:weatherSync")
-AddEventHandler("stp:weatherSync", function(weather)
-	SetCloudHatOpacity(1.0)
+AddEventHandler("stp:weatherSync", function(weather, cloudOpacity)
+	SetCloudHatOpacity(cloudOpacity)
 	if not transitioningWeather then
 		if currentWeather ~= weather then
 			SetWeatherTypeOverTime(weather, 30.0)
