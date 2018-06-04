@@ -1,4 +1,5 @@
 local alreadyInited
+local isSwitching
 
 DecorRegister("_PLAYER_TEAM", 3)
 
@@ -19,6 +20,10 @@ function Spawner.Init()
 	end
 end
 
+function Spawner.IsSwitching()
+	return isSwitching
+end
+
 Citizen.CreateThread(function()
 	if DoesEntityExist(PlayerPedId()) then
 		Spawner.Init()
@@ -27,6 +32,7 @@ end)
 AddEventHandler("playerSpawned", Spawner.Init)
 
 AddEventHandler("stp:respawn", function(instant)
+	isSwitching = true
 	DisplayRadar(false)
 	DisplayHud(false)
 
@@ -73,6 +79,7 @@ AddEventHandler("stp:respawn", function(instant)
 		PlaySoundFrontend(-1, "OTHER_TEXT", "HUD_AWARDS", false)
 		TeamMenu.GreyOut(false)
 	end
+	isSwitching = false
 end)
 
 function Spawner.SetTeamStuff()

@@ -21,17 +21,17 @@ Citizen.CreateThread(function()
 		if timeLeft and timeLeft > 0 then
 			if timeLeft == 1 then
 				Wait(1000)
-				SetEntityInvincible(PlayerPedId(), false)
+				SetEntityInvincible(PlayerPedId())
 
 				SetNotificationTextEntry("STRING")
 				AddTextComponentSubstringPlayerName("~r~You are not invincible anymore!")
-				DrawNotification(true, false)
+				DrawNotification(true)
 				StopScreenEffect("FocusIn")
-				StartScreenEffect("FocusOut", 1000, false)
+				StartScreenEffect("FocusOut", 1000)
 			elseif timeLeft == 29 and not GetScreenEffectIsActive("FocusIn") then
 				SetNotificationTextEntry("STRING")
 				AddTextComponentSubstringPlayerName("~g~You are invincible for 30 seconds!")
-				DrawNotification(true, false)
+				DrawNotification(true)
 				StartScreenEffect("FocusIn")
 			else
 				SetEntityInvincible(PlayerPedId(), true)
@@ -44,16 +44,18 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(1)
 
-		if timeLeft and timeLeft > 0 then
-			DrawRect(0.675, 0.05, 0.08, 0.1, 0, 0, 0, 155, 0)
+		if not Spawner.IsSwitching() then
+			if timeLeft and timeLeft > 0 then
+				DrawRect(0.675, 0.05, 0.08, 0.1, 0, 0, 0, 155, 0)
 
-		    BeginTextCommandDisplayText("STRING")
-			SetTextFont(4)
-			SetTextScale(1.5, 1.5)
-			SetTextColour(255, 214, 0, 255)
+			    BeginTextCommandDisplayText("STRING")
+				SetTextFont(4)
+				SetTextScale(1.5, 1.5)
+				SetTextColour(255, 214, 0, 255)
 
-			AddTextComponentSubstringPlayerName(string.format("%02i", timeLeft % 60))
-			EndTextCommandDisplayText(0.658, 0.005)
+				AddTextComponentSubstringPlayerName(string.format("%02i", timeLeft % 60))
+				EndTextCommandDisplayText(0.658, 0.005)
+			end
 		end
 	end
 end)

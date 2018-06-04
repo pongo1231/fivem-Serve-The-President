@@ -8,9 +8,11 @@ end)
 Round = {}
 function Round.Restart()
 	if not firstRound then
-		TriggerClientEvent("stp:teamToNone", -1)
+		TriggerClientEvent("stp:toTeam", -1, TeamId.None)
 	end
 
 	Countdown.Set(1800)
 	firstRound = false
 end
+
+Round.Restart()

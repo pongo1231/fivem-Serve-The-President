@@ -22,13 +22,15 @@ client_scripts {
 
 	"player/spawner.lua",
 	"player/death.lua",
+	"player/fancyeffects.lua",
 
 	"spawns/vehiclespawns.lua",
 	"spawns/pickupspawns.lua"
 }
 
 server_scripts {
-	"server/round.lua",
+	"server/teams.lua",
 	"server/countdown.lua",
+	"server/round.lua",
 	"server/invincibletime.lua"
 }

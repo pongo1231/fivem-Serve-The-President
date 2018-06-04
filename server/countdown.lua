@@ -18,5 +18,3 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
-
-Round.Restart()

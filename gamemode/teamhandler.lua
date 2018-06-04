@@ -6,8 +6,10 @@ function CurrentTeam.Update(team, instant)
 	TeamHelpDisplay.Stop()
 	Spawner.Respawn(instant)
 end
-RegisterNetEvent("stp:teamToNone")
-AddEventHandler("stp:teamToNone", function() CurrentTeam.Update(TeamId.None) end)
+RegisterNetEvent("stp:toTeam")
+AddEventHandler("stp:toTeam", function(team)
+	CurrentTeam.Update(team)
+end)
 
 function CurrentTeam.Get()
 	return currentTeam
