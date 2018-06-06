@@ -66,7 +66,7 @@ Citizen.CreateThread(function()
 		Wait(1)
 
 		if CurrentTeam.Get() == TeamId.President or CurrentTeam.Get() == TeamId.Vice then
-			TeamMenu.OverrideGreyedOut(true, "We can't give up, dear president!")
+			TeamMenu.OverrideGreyedOut(true, "You can't give up as president!")
 		elseif not overriden then
 			local teamAmounts = {}
 			for _, teamId in pairs(TeamId) do
