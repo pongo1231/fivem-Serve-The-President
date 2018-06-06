@@ -34,5 +34,6 @@ server_scripts {
 	"server/countdown.lua",
 	"server/round.lua",
 	"server/invincibletime.lua",
-	"server/weathersync.lua"
+	"server/weathersync.lua",
+	"server/teambalancing.lua"
 }

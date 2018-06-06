@@ -98,7 +98,7 @@ local vehicleSpawns = {
 	{model = "hexer", x = -818.0, y = -132.3, z = 28.2, h = 33.6},
 	{model = "pranger", x = -1211.5, y = -681.5, z = 25.4, h = 314.9},
 	{model = "windsor", x = -1164.9, y = -534.2, z = 30.1, h = 210.3},
-	{model = "utillitruk", x = -436.6, y = -441.0, z = 32.3, h = 353.9},
+	{model = "towtruk", x = -436.6, y = -441.0, z = 32.3, h = 353.9},
 	{model = "vader", x = -909.7, y = -2485.0, z = 14.5, h = 258.6},
 	{model = "stunt", x = -970.8, y = -3018.5, z = 13.5, h = 59.5},
 	{model = "supervolito", x = -1146.1, y = -2864.7, z = 13.5, h = 0.0},
