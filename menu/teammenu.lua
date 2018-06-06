@@ -1,4 +1,5 @@
 local ids = {}
+local overriden
 
 AddEventHandler("menu:setup", function()
 	ids = {}
@@ -30,14 +31,49 @@ function TeamMenu.OnClick(team)
 	TriggerEvent("menu:hideMenu")
 end
 
-function TeamMenu.GreyOut(state, team)
-	if not team then
-		for _, id in pairs(ids) do
-			TriggerEvent("menu:setGreyedOut", state, id)
-		end
-	else
-		TriggerEvent("menu:setGreyedOut", state, ids[team])
+function TeamMenu.OverrideGreyedOut(state)
+	overriden = state
+	for _, id in pairs(ids) do
+		TriggerEvent("menu:setGreyedOut", state, id)
 	end
 end
-RegisterNetEvent("stp:teamMenuGreyOut")
-AddEventHandler("stp:teamMenuGreyOut", TeamMenu.GreyOut)
+
+Citizen.CreateThread(function()
+	while true do
+		Wait(1)
+
+		if not overriden then
+			local teamAmounts = {}
+			for _, teamId in pairs(TeamId) do
+				teamAmounts[teamId] = 0
+			end
+
+			for i = 0, 32 do
+				if NetworkIsPlayerConnected(i) and DoesEntityExist(GetPlayerPed(i)) and DecorExistOn(GetPlayerPed(i), "_PLAYER_TEAM") then
+					local teamId = DecorGetInt(GetPlayerPed(i), "_PLAYER_TEAM")
+					teamAmounts[teamId] = teamAmounts[teamId] + 1
+				end
+			end
+
+			TriggerEvent("menu:setGreyedOut", true, ids[CurrentTeam.Get()])
+			TriggerEvent("menu:setGreyedOut", teamAmounts[TeamId.President] > 0, ids[TeamId.President])
+			TriggerEvent("menu:setGreyedOut", teamAmounts[TeamId.Vice] > 0, ids[TeamId.Vice])
+
+			local lowest = 99999
+			for team, amount in pairs(teamAmounts) do
+				if team ~= TeamId.None and team ~= TeamId.President and team ~= TeamId.Vice and amount < lowest then
+					lowest = amount
+				end
+			end
+			for team, amount in pairs(teamAmounts) do
+				if team ~= TeamId.None and team ~= TeamId.President and team ~= TeamId.Vice then
+					local greyOut = teamAmounts[team] > lowest + 1
+					if team == TeamId.Bodyguard then
+						greyOut = teamAmounts[TeamId.President] == 0
+					end
+					TriggerEvent("menu:setGreyedOut", greyOut, ids[team])
+				end
+			end
+		end
+	end
+end)

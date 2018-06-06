@@ -6,7 +6,7 @@ Citizen.CreateThread(function()
 		Wait(100)
 
 		if DoesEntityExist(PlayerPedId()) and IsEntityDead(PlayerPedId()) then
-			TeamMenu.GreyOut(true)
+			TeamMenu.OverrideGreyedOut(true)
 			drawDeathScaleform = true
 
 			PlaySoundFrontend(-1, "Bed", "WastedSounds", true)
@@ -29,7 +29,7 @@ Citizen.CreateThread(function()
 			StopScreenEffect("DeathFailMPIn")
 			DoScreenFadeIn(500)
 
-			TeamMenu.GreyOut(false)
+			TeamMenu.OverrideGreyedOut(false)
 			TriggerServerEvent("stp:server:playerDied")
 		end
 	end

@@ -1,8 +1,6 @@
 local alreadyInited
 local isSwitching
 
-DecorRegister("_PLAYER_TEAM", 3)
-
 Spawner = {}
 function Spawner.Respawn(instant)
 	TriggerEvent("stp:respawn", instant)
@@ -39,7 +37,7 @@ AddEventHandler("stp:respawn", function(instant)
 	local spawnPos = TeamSpawns.Random(CurrentTeam.Get())
 
 	if not instant then
-		TeamMenu.GreyOut(true)
+		TeamMenu.OverrideGreyedOut(true)
 		SetEntityInvincible(PlayerPedId(), true)
 
 		local currentPos = GetEntityCoords(PlayerPedId(), true)
@@ -77,7 +75,7 @@ AddEventHandler("stp:respawn", function(instant)
 		StopPlayerSwitch()
 		RenderScriptCams(false, false, 3000, true, false)
 		PlaySoundFrontend(-1, "OTHER_TEXT", "HUD_AWARDS", false)
-		TeamMenu.GreyOut(false)
+		TeamMenu.OverrideGreyedOut(false)
 	end
 	isSwitching = false
 end)

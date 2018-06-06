@@ -1,5 +1,7 @@
 local currentTeam = TeamId.None
 
+DecorRegister("_PLAYER_TEAM", 3)
+
 CurrentTeam = {}
 function CurrentTeam.Update(team, instant)
 	currentTeam = team

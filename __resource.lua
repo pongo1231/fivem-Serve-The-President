@@ -6,6 +6,7 @@ client_scripts {
 	"env/weathersync.lua",
 
 	"menu/teammenu.lua",
+	"menu/pausemenutitle.lua",
 	"util/entityiterator.lua",
 
 	"team/teamids.lua",
@@ -35,6 +36,5 @@ server_scripts {
 	"server/countdown.lua",
 	"server/round.lua",
 	"server/invincibletime.lua",
-	"server/weathersync.lua",
-	"server/teambalancing.lua"
+	"server/weathersync.lua"
 }
