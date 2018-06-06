@@ -78,7 +78,7 @@ Citizen.CreateThread(function()
 
 			TriggerEvent("menu:setGreyedOut", true, ids[CurrentTeam.Get()])
 			TriggerEvent("menu:setGreyedOut", teamAmounts[TeamId.President] > 0, ids[TeamId.President])
-			TriggerEvent("menu:setGreyedOut", teamAmounts[TeamId.Vice] > 0, ids[TeamId.Vice])
+			TriggerEvent("menu:setGreyedOut", teamAmounts[TeamId.President] < 1, ids[TeamId.Vice])
 
 			local lowest = 99999
 			for team, amount in pairs(teamAmounts) do
