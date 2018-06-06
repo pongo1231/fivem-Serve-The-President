@@ -1,8 +1,16 @@
 local firstRound = true
 
-RegisterNetEvent("stp:server:presidentDied")
-AddEventHandler("stp:server:presidentDied", function()
-	Round.Restart()
+RegisterNetEvent("stp:server:playerDied")
+AddEventHandler("stp:server:playerDied", function()
+	if Players.GetPlayerTeam(source) == TeamId.President then
+		Round.Restart()
+	end
+end)
+
+AddEventHandler("playerConnecting", function(playerName, setKickReason)
+	if #Players.Get() == 1 then
+		Round.Restart()
+	end
 end)
 
 Round = {}

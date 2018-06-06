@@ -30,9 +30,7 @@ Citizen.CreateThread(function()
 			DoScreenFadeIn(500)
 
 			TeamMenu.GreyOut(false)
-			if CurrentTeam.Get() == TeamId.President then
-				TriggerServerEvent("stp:server:presidentDied")
-			end
+			TriggerServerEvent("stp:server:playerDied")
 		end
 	end
 end)

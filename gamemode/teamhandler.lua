@@ -4,12 +4,11 @@ CurrentTeam = {}
 function CurrentTeam.Update(team, instant)
 	currentTeam = team
 	TeamHelpDisplay.Stop()
+	TriggerServerEvent("stp:server:teamEntered", team)
 	Spawner.Respawn(instant)
 end
 RegisterNetEvent("stp:toTeam")
-AddEventHandler("stp:toTeam", function(team)
-	CurrentTeam.Update(team)
-end)
+AddEventHandler("stp:toTeam", CurrentTeam.Update)
 
 function CurrentTeam.Get()
 	return currentTeam

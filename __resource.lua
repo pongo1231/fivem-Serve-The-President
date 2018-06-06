@@ -30,6 +30,7 @@ client_scripts {
 }
 
 server_scripts {
+	"server/players.lua",
 	"server/teams.lua",
 	"server/countdown.lua",
 	"server/round.lua",
