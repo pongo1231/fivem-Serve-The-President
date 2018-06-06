@@ -1,5 +1,6 @@
 local ids = {}
 local overriden
+local cooldown
 
 AddEventHandler("menu:setup", function()
 	ids = {}
@@ -29,12 +30,32 @@ TeamMenu = {}
 function TeamMenu.OnClick(team)
 	CurrentTeam.Update(team)
 	TriggerEvent("menu:hideMenu")
+	cooldown = 60
 end
 
-function TeamMenu.OverrideGreyedOut(state)
+Citizen.CreateThread(function()
+	while true do
+		Wait(1000)
+
+		if cooldown and cooldown > 0 then
+			if CurrentTeam.Get() == TeamId.None then
+				cooldown = 0
+			else
+				cooldown = cooldown - 1
+			end
+			TeamMenu.OverrideGreyedOut(true, string.format("Please wait %02i seconds", cooldown))
+		elseif cooldown then
+			TeamMenu.OverrideGreyedOut(false, nil)
+			cooldown = nil
+		end
+	end
+end)
+
+function TeamMenu.OverrideGreyedOut(state, desc)
 	overriden = state
 	for _, id in pairs(ids) do
 		TriggerEvent("menu:setGreyedOut", state, id)
+		TriggerEvent("menu:setDesc", id, desc)
 	end
 end
 
@@ -66,7 +87,7 @@ Citizen.CreateThread(function()
 				end
 			end
 			for team, amount in pairs(teamAmounts) do
-				if team ~= TeamId.None and team ~= TeamId.President and team ~= TeamId.Vice then
+				if team ~= TeamId.None and team ~= TeamId.President and team ~= TeamId.Vice and team ~= CurrentTeam.Get() then
 					local greyOut = teamAmounts[team] > lowest + 1
 					if team == TeamId.Bodyguard then
 						greyOut = teamAmounts[TeamId.President] == 0
