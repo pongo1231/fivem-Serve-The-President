@@ -37,18 +37,19 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(1000)
 
-		if cooldown and cooldown > 0 then
-			if CurrentTeam.Get() == TeamId.None then
-				cooldown = 0
+		if not overriden and cooldown then
+			if cooldown > 0 then
+				if CurrentTeam.Get() == TeamId.None then
+					cooldown = 0
+				else
+					cooldown = cooldown - 1
+				end
+				TriggerEvent("menu:setGreyedOut", true, ids["menu"])
+				TriggerEvent("menu:setDesc", ids["menu"], string.format("Please wait %02i seconds", cooldown))
 			else
-				cooldown = cooldown - 1
+				TeamMenu.OverrideGreyedOut(false)
+				cooldown = nil
 			end
-			if not overriden then
-				TeamMenu.OverrideGreyedOut(true, string.format("Please wait %02i seconds", cooldown))
-			end
-		elseif cooldown and not overriden then
-			TeamMenu.OverrideGreyedOut(false, nil)
-			cooldown = nil
 		end
 	end
 end)
@@ -65,9 +66,7 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(1)
 
-		if CurrentTeam.Get() == TeamId.President or CurrentTeam.Get() == TeamId.Vice then
-			TeamMenu.OverrideGreyedOut(true, "You can't give up as president!")
-		elseif not overriden then
+		if not overriden then
 			local teamAmounts = {}
 			for _, teamId in pairs(TeamId) do
 				teamAmounts[teamId] = 0
