@@ -37,18 +37,18 @@ Citizen.CreateThread(function()
 	while true do
 		Wait(1000)
 
-		if not overriden then
-			if cooldown and cooldown > 0 then
-				if CurrentTeam.Get() == TeamId.None then
-					cooldown = 0
-				else
-					cooldown = cooldown - 1
-				end
-				TeamMenu.OverrideGreyedOut(true, string.format("Please wait %02i seconds", cooldown))
-			elseif cooldown then
-				TeamMenu.OverrideGreyedOut(false, nil)
-				cooldown = nil
+		if cooldown and cooldown > 0 then
+			if CurrentTeam.Get() == TeamId.None then
+				cooldown = 0
+			else
+				cooldown = cooldown - 1
 			end
+			if not overriden then
+				TeamMenu.OverrideGreyedOut(true, string.format("Please wait %02i seconds", cooldown))
+			end
+		elseif cooldown and not overriden then
+			TeamMenu.OverrideGreyedOut(false, nil)
+			cooldown = nil
 		end
 	end
 end)
