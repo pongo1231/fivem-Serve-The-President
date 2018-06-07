@@ -16,21 +16,23 @@ Citizen.CreateThread(function()
 			DisplayRadar(false)
 
 			StartScreenEffect("DeathFailMPIn", 0, false)
+			TriggerServerEvent("stp:server:playerDied")
 			Wait(10000)
 			if Countdown.Get() and Countdown.Get() > 30 then
 				TriggerMusicEvent("KILL_LIST_STOP_MUSIC")
 			end
 
-			DoScreenFadeOut(500)
 			drawDeathScaleform = false
+			if CurrentTeam.Get() ~= TeamId.None then
+				DoScreenFadeOut(500)
 
-			Wait(4000)
-			Spawner.Respawn(true)
-			StopScreenEffect("DeathFailMPIn")
-			DoScreenFadeIn(500)
+				Wait(4000)
+				Spawner.Respawn(true)
+				StopScreenEffect("DeathFailMPIn")
+				DoScreenFadeIn(500)
+			end
 
 			TeamMenu.OverrideGreyedOut(false)
-			TriggerServerEvent("stp:server:playerDied")
 		end
 	end
 end)

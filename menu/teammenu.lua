@@ -67,35 +67,39 @@ Citizen.CreateThread(function()
 		Wait(1)
 
 		if not overriden then
-			local teamAmounts = {}
-			for _, teamId in pairs(TeamId) do
-				teamAmounts[teamId] = 0
-			end
-
-			for i = 0, 32 do
-				if NetworkIsPlayerConnected(i) and DoesEntityExist(GetPlayerPed(i)) and DecorExistOn(GetPlayerPed(i), "_PLAYER_TEAM") then
-					local teamId = DecorGetInt(GetPlayerPed(i), "_PLAYER_TEAM")
-					teamAmounts[teamId] = teamAmounts[teamId] + 1
+			if CurrentTeam.Get() == TeamId.President or CurrentTeam.Get() == TeamId.Vice then
+				TeamMenu.OverrideGreyedOut(true, "No giving up as a president!")
+			else
+				local teamAmounts = {}
+				for _, teamId in pairs(TeamId) do
+					teamAmounts[teamId] = 0
 				end
-			end
 
-			TriggerEvent("menu:setGreyedOut", true, ids[CurrentTeam.Get()])
-			TriggerEvent("menu:setGreyedOut", teamAmounts[TeamId.President] > 0, ids[TeamId.President])
-			TriggerEvent("menu:setGreyedOut", teamAmounts[TeamId.President] < 1, ids[TeamId.Vice])
-
-			local lowest = 99999
-			for team, amount in pairs(teamAmounts) do
-				if team ~= TeamId.None and team ~= TeamId.President and team ~= TeamId.Vice and amount < lowest then
-					lowest = amount
-				end
-			end
-			for team, amount in pairs(teamAmounts) do
-				if team ~= TeamId.None and team ~= TeamId.President and team ~= TeamId.Vice and team ~= CurrentTeam.Get() then
-					local greyOut = teamAmounts[team] > lowest + 1
-					if team == TeamId.Bodyguard then
-						greyOut = teamAmounts[TeamId.President] == 0
+				for i = 0, 32 do
+					if NetworkIsPlayerConnected(i) and DoesEntityExist(GetPlayerPed(i)) and DecorExistOn(GetPlayerPed(i), "_PLAYER_TEAM") then
+						local teamId = DecorGetInt(GetPlayerPed(i), "_PLAYER_TEAM")
+						teamAmounts[teamId] = teamAmounts[teamId] + 1
 					end
-					TriggerEvent("menu:setGreyedOut", greyOut, ids[team])
+				end
+
+				TriggerEvent("menu:setGreyedOut", true, ids[CurrentTeam.Get()])
+				TriggerEvent("menu:setGreyedOut", teamAmounts[TeamId.President] > 0, ids[TeamId.President])
+				TriggerEvent("menu:setGreyedOut", teamAmounts[TeamId.President] < 1, ids[TeamId.Vice])
+
+				local lowest = 99999
+				for team, amount in pairs(teamAmounts) do
+					if team ~= TeamId.None and team ~= TeamId.President and team ~= TeamId.Vice and amount < lowest then
+						lowest = amount
+					end
+				end
+				for team, amount in pairs(teamAmounts) do
+					if team ~= TeamId.None and team ~= TeamId.President and team ~= TeamId.Vice and team ~= CurrentTeam.Get() then
+						local greyOut = teamAmounts[team] > lowest + 1
+						if team == TeamId.Bodyguard then
+							greyOut = teamAmounts[TeamId.President] == 0
+						end
+						TriggerEvent("menu:setGreyedOut", greyOut, ids[team])
+					end
 				end
 			end
 		end
