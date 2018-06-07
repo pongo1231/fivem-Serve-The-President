@@ -14,7 +14,7 @@ function Players.GetPlayerTeam(source)
 end
 
 AddEventHandler("playerConnecting", function()
-	Players.SetTeam(source, PlayerId.None)
+	Players.SetTeam(source, TeamId.None)
 end)
 
 RegisterServerEvent("stp:server:teamEntered")
