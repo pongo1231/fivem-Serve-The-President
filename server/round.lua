@@ -7,8 +7,8 @@ AddEventHandler("stp:server:playerDied", function()
 	end
 end)
 
-AddEventHandler("playerConnecting", function(playerName, setKickReason)
-	if #Players.Get() == 1 then
+AddEventHandler("playerConnecting", function()
+	if #Players.GetAll() == 1 then
 		Round.Restart()
 	end
 end)
