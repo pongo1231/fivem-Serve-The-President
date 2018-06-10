@@ -6,6 +6,8 @@ Citizen.CreateThread(function()
 		Wait(100)
 
 		if DoesEntityExist(PlayerPedId()) and IsEntityDead(PlayerPedId()) then
+			-- time to find out if this was a suicide or if he was killed! :o
+			local killer, killerweapon = NetworkGetEntityKillerOfPlayer(player)
 			TeamMenu.OverrideGreyedOut(true)
 			drawDeathScaleform = true
 
@@ -16,7 +18,15 @@ Citizen.CreateThread(function()
 			DisplayRadar(false)
 
 			StartScreenEffect("DeathFailMPIn", 0, false)
-			TriggerServerEvent("stp:server:playerDied")
+			if killer ~= PlayerPedId() then
+				-- killed
+				local killerid = GetPlayerByEntityID(killer)
+				if killer ~= PlayerPedId() and killerid ~= nil and NetworkIsPlayerActive(killerid) then killerid = GetPlayerServerId(killerid)
+				TriggerServerEvent("stp:server:playerDied", killerid)
+			else	
+				-- suicide
+				TriggerServerEvent("stp:server:playerDied", nil)
+			end
 			Wait(10000)
 			if Countdown.Get() and Countdown.Get() > 30 then
 				TriggerMusicEvent("KILL_LIST_STOP_MUSIC")
