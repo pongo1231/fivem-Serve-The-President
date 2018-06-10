@@ -38,3 +38,5 @@ server_scripts {
 	"server/invincibletime.lua",
 	"server/weathersync.lua"
 }
+
+shared_script 'util/debug.lua'
