@@ -4,12 +4,14 @@ RegisterNetEvent("stp:server:playerDied")
 AddEventHandler("stp:server:playerDied", function(killer)
 	CreateThread(function()
 		if Players.GetPlayerTeam(source) == TeamId.President then
-			Round.Restart()
 			if killer ~= nil then
 				TriggerClientEvent("stp:client:RoundEnd", -1, GetPlayerName(killer))
 			else
 				TriggerClientEvent("stp:client:RoundEnd", -1, nil)
 			end
+			-- ensure everyone finished seeing the winner screen by adding another 100ms
+			Wait(5100)
+			Round.Restart()
 		end
 	end)
 	
