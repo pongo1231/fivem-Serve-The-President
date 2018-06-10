@@ -14,6 +14,8 @@ Citizen.CreateThread(function()
 			TriggerClientEvent("stp:setCountdown", -1, counter)
 			if counter == 0 then
 				DebugPrint("STP::RoundEnd")
+				TriggerClientEvent("stp:client:TimeIsOut", -1)
+				Wait(5100)
 				Round.Restart()
 			end
 		end
