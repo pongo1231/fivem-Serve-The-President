@@ -31,5 +31,5 @@ TeamModels = {
 }
 
 function TeamModels.Random(team)
-	return TeamModels[team][GetRandomIntInRange(1, #TeamModels[team])]
+	return TeamModels[team][math.random(1, #TeamModels[team])]
 end
