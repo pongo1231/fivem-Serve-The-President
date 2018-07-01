@@ -1,11 +1,14 @@
 RegisterNetEvent("stp:client:RoundEnd")
 AddEventHandler("stp:client:RoundEnd", function(name)
+    print("round has ended")
+    local name = name
     Citizen.CreateThread(function()
         local start = GetGameTimer()
         FreezeEntityPosition(PlayerPedId(), true)
         while GetGameTimer() - start < 5000 do 
             Wait(0)
             DrawWinnerThisFrame(name)
+            print("drawing...")
         end
         FreezeEntityPosition(PlayerPedId(), false)
     end)
@@ -30,8 +33,8 @@ function DrawWinnerThisFrame(name)
         Citizen.Wait(0)
     end
     BeginScaleformMovieMethod(scaleform, "SHOW_SHARD_WASTED_MP_MESSAGE")
-    PushScaleformMovieMethodParameterString("~y The President Died!")
-    if name then
+    PushScaleformMovieMethodParameterString("~y~The President Died!")
+    if name ~= nil then
     PushScaleformMovieMethodParameterString("Killed by:" .. name)
     else
         PushScaleformMovieMethodParameterString("")

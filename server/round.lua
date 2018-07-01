@@ -2,8 +2,11 @@ local firstRound = true
 
 RegisterNetEvent("stp:server:playerDied")
 AddEventHandler("stp:server:playerDied", function(killer)
+	print("someone died")
+	local source = source
 	CreateThread(function()
 		if Players.GetPlayerTeam(source) == TeamId.President then
+			print("it was the president!!!")
 			if killer ~= nil then
 				TriggerClientEvent("stp:client:RoundEnd", -1, GetPlayerName(killer))
 			else
@@ -11,6 +14,7 @@ AddEventHandler("stp:server:playerDied", function(killer)
 			end
 			-- ensure everyone finished seeing the winner screen by adding another 100ms
 			Wait(5100)
+			print("restarting...")
 			Round.Restart()
 		end
 	end)

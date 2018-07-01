@@ -23,5 +23,5 @@ AddEventHandler("stp:server:teamEntered", function(team)
 end)
 
 AddEventHandler("playerDropped", function()
-	table.remove(players, source)
+	players[source] = nil
 end)
